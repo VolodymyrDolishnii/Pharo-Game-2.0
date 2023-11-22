@@ -1,6 +1,9 @@
 as yet unclassified
 showGameInfoOnClose
-	Transcript clear; 
+	Transcript clear;
+		show: 'Active cells count: '; 
+		show: self countActiveCells;
+		cr; 
 		show: 'Last game click number: '; 
 		show: self clickNumber;
 		cr;

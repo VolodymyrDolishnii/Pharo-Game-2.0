@@ -7,8 +7,18 @@ menuCommandOn: aBuilder
   (aBuilder item: #'Run Game')
     order: 0;
     action: [self open].
-  (aBuilder item: #'Show clickCount')
+  (aBuilder item: #'Active Cells count')
 	 order: 1;
+	 action: [ TheGame = nil ifTrue: [ 
+				Transcript clear; show: 'Please start the new game.'; open.
+			 ] ifFalse: [ 
+				Transcript clear;
+				show: 'Active cells count: '; 
+				show: self countActiveCells;
+				open.
+			 ] ].
+  (aBuilder item: #'Show clickCount')
+	 order: 2;
 	 action: [ TheGame = nil ifTrue: [ 
 			Transcript clear; show: 'Please start the new game.'; open.
 			 ] ifFalse: [ 
@@ -18,7 +28,7 @@ menuCommandOn: aBuilder
 				open.
 			]  ].
 	(aBuilder item: #'Show the number of game launches')
-    order: 2;
+    order: 3;
     action: [ 
 		Transcript clear; 
 		show: 'The game has been launched ';
@@ -27,6 +37,6 @@ menuCommandOn: aBuilder
 		open.
 	].
 	(aBuilder item: #'Exit Game')
-    order: 3;
+    order: 4;
     action: [self close].	
 ].
